@@ -3,56 +3,59 @@ import os
 import csv
 
 # Path to collect data from the Resources folder
-budget_csv = os.path.join('..', 'Resources', 'budget_data.csv')
-
-# Read in the CSV file
-with open(budget_csv, 'r') as csvfile:
-
-    # Split the data on commas
-    csvreader = csv.reader(csvfile, delimiter=',')
-
-    header = next(csvreader)
+budget_csv = os.path.join('.', 'Resources', 'budget_data.csv')
 
 # Lists to store data
-    months[]
-    profit[]
-    profit_change = []
-    avg_prof_change = []
-    max_prof_change = []
-    min_prof_change = []
-    max_prof_change_date = []
-    min_prof_change_date = []
-   
+
+months = []    
+profit = []
+profit_change = []
+avg_prof_change = []
+max_prof_change = []
+min_prof_change = []
+max_prof_change_date = []
+min_prof_change_date = []
+
+# Read in the CSV file
+with open(budget_csv) as budget_file:
+
+    # Split the data on commas
+    budget_reader = csv.reader(budget_file, delimiter=',')
+
+    header = next(budget_reader)
+
+
+
 
 #The total number of months included in the dataset
 #The net total amount of "Profit/Losses" over the entire period
-for row in budget_csv:
+    for row in budget_reader:
 
-    #assign to rows
-    months.append(row[0])
-    profit.append(row[1])
+        #assign to rows
+        months.append(row[0])
+        profit.append(float(row[1]))
 
 #print output
 print("Financial Analysis")
 print("-----------------------------------")
-print("Total Months:", len(months))
-print("Total: $", sum(profit))
+print(f"Total Months:", len(months))
+print(f"Total: $", round(sum(profit)))
 
 
 for i in range(1, len(profit)):
     #The average of the changes in "Profit/Losses" over the entire period
     profit_change.append(profit[i]-profit[i-1])
-    avg_change = sum(profit_change)/len(profit_change)
+    avg_prof_change = sum(profit_change)/len(profit_change)
 
     #The greatest increase in profits (date and amount) over the entire period
-    max_prof_change = max(prof_change)
-    max_prof_change_date = str(month[prof_change.index(max(prof_change))])
+    max_prof_change = max(profit_change)
+    max_prof_change_date = str(months[profit_change.index(max(profit_change))])
 
     #The greatest decrease in losses (date and amount) over the entire period
-    min_prof_change = min(prof_change)
-    min_prof_change_date = str(month[prof_change.index(min(prof_change))])
+    min_prof_change = min(profit_change)
+    min_prof_change_date = str(months[profit_change.index(min(profit_change))])
 
 #print output
-print("Avereage Change: $", round(avg_prof_change))
-print("Greatest Increase in Profits:", max_prof_change_date,"($", max_prof_change,")")
-print("Greatest Decrease in Profits:", min_prof_change_date,"($", min_prof_change,")")
+print(f"Average Change: $", round(avg_prof_change, 2))
+print(f"Greatest Increase in Profits:", max_prof_change_date,"($",round(max_prof_change),")")
+print(f"Greatest Decrease in Profits:", min_prof_change_date, "($",round(min_prof_change),")")
