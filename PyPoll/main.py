@@ -31,7 +31,7 @@ with open(election_csv) as election_file:
         #if x not in candidates_unique, append list and increase vote count by 1
         else:
             candidates_unique.append(candidate)
-            vote_count.append(1)
+            candidate_vote_count.append(1)
 
 
 
@@ -42,11 +42,11 @@ max_index = 0
 #The percentage of votes each candidate won
 #The total number of votes each candidate won
 for x in range(len(candidates_unique)):
-    vote_percent = round(candidate_vote_count[x]/total_votes)*100
+    vote_percent = round(candidate_vote_count[x]/total_votes*100, 2)
     percent.append(vote_percent)
 
     if candidate_vote_count[x] > max_votes:
-        max_votes = cadidate_vote_count[x]
+        max_votes = candidate_vote_count[x]
         max_index = x
 
 #The winner of the election based on popular vote. 
@@ -55,10 +55,10 @@ winner = candidates_unique[max_index]
 #print results
 print ("Election Results")
 print("-------------------------")
-print(f'Total Votes: {total_votes'}, 
+print(f'Total Votes: {total_votes}')
 print("-------------------------")
 for x in range(len(candidates_unique)):
     print(f'{candidates_unique[x]} : {percent[x]}% ({candidate_vote_count[x]})')
 print("-------------------------")
-print(f'Winner:, {winner.upper()}'}
+print(f'Winner:, {winner.upper()}')
 print("-------------------------")
