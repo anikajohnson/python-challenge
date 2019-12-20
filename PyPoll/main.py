@@ -6,39 +6,34 @@ import csv
 election_csv = os.path.join('.', 'Resources', 'election_data.csv')
 
 #Lists to store data
-voter_id = []
-county = []
-candidate_votes = []
+total_votes = 0
+candidates_unique = []
+candidate_vote_count []
+percentage = []
 
-varibles
-Khan_count = 0
-Correy_count = 0
-Li_count = 0
 # Read in the CSV file
 with open(election_csv) as election_file:
      # Split the data on commas
     election_data = csv.reader(election_file, delimiter=',')
-
     header = next(election_data)
+    
     for row in election_data:
-    #A complete list of candidates who received votes
-        voter_id.append(row[0])
-        county.append(row[1])
-        candidate_votes.append(row[2])
+        #A complete list of candidates who received votes
+        total_votes += 1
 
-    def unique(candidate_votes):
-        candidate_list = []
+        #take value from row 2
+        candidate = (row[2])
 
-        for x in candidate_votes:
-            if x not in candidate_list:
-                candidate_list.append(x)
-        for x in candidate_list:
-           print (x, end=" ")
+        #if already in list, index candidate and increase vote count by 1
+        if candidate in candidates_unique:
+                candidate_index = candidates_unique.index(candidate)
+                candidate_vote_count[candidate_index] = candidate_vote_count[candidate_index] + 1
+        #if x not in candidates_unique, append list and increase vote count by 1
+        else:
+            candidates_unique.append(candidate)
+            vote_count.append(1)
 
-print(unique(candidate_votes))
-
-    for row in election_data:
-        if "Khan" == candidate_votes:
+        percent_win = candidate_vote_count / len(total_votes) * 100
 
 
 #The percentage of votes each candidate won
@@ -47,4 +42,14 @@ print(unique(candidate_votes))
 #The total number of votes each candidate won
 
 
-#The winner of the election based on popular vote.
+#The winner of the election based on popular vote. 
+
+print ("Election Results")
+print("-------------------------")
+print("Total Votes:", len(candidate_votes)
+print("-------------------------")
+for x in range(len(candidates_unique)):
+    print(f'{candidates_unique[x]} : {percentage[x]}% ({candidate_vote_count[x]})')
+print("-------------------------")
+print("Winner:", most_votes)
+print("-------------------------")
