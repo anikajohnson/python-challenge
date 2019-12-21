@@ -67,7 +67,7 @@ output_file = os.path.join("election_results.txt")
 with open(output_file, "w", newline="") as datafile:
     datafile.write ("Election Results\n")
     datafile.write("-------------------------\n")
-    datafile.write(f'Total Votes: {total_votes},\n')
+    datafile.write(f'Total Votes: {total_votes}\n')
     datafile.write("-------------------------\n")
     for x in range(len(candidates_unique)):
         datafile.write(f'{candidates_unique[x]} : {percent[x]}% ({candidate_vote_count[x]})\n')
