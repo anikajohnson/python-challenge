@@ -60,5 +60,5 @@ print("-------------------------")
 for x in range(len(candidates_unique)):
     print(f'{candidates_unique[x]} : {percent[x]}% ({candidate_vote_count[x]})')
 print("-------------------------")
-print(f'Winner:, {winner.upper()}')
+print(f'Winner: {winner}')
 print("-------------------------")
