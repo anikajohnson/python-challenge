@@ -38,8 +38,8 @@ with open(budget_csv) as budget_file:
 #print output
 print("Financial Analysis")
 print("-----------------------------------")
-print(f"Total Months:", len(months))
-print(f"Total: $", round(sum(profit)))
+print(f'Total Months: {len(months)}')
+print(f'Total: $ {round(sum(profit))}')
 
 
 for i in range(1, len(profit)):
@@ -55,7 +55,18 @@ for i in range(1, len(profit)):
     min_prof_change = min(profit_change)
     min_prof_change_date = str(months[profit_change.index(min(profit_change))])
 
-#print output
-print(f"Average Change: $", round(avg_prof_change, 2))
-print(f"Greatest Increase in Profits:", max_prof_change_date,"($",round(max_prof_change),")")
-print(f"Greatest Decrease in Profits:", min_prof_change_date, "($",round(min_prof_change),")")
+#print to terminal 
+print(f'Average Change: $ {round(avg_prof_change, 2)}')
+print(f'Greatest Increase in Profits: {max_prof_change_date}($ {round(max_prof_change)})')
+print(f'Greatest Decrease in Profits: {min_prof_change_date} ($ {round(min_prof_change)})')
+
+#print to file
+output_file = os.path.join("financial_analysis.txt")
+with open(output_file, "w", newline="") as datafile:
+    datafile.write("Financial Analysis\n")
+    datafile.write("-----------------------------------\n")
+    datafile.write(f'Total Months: {len(months)}\n')
+    datafile.write(f'Total: $ {round(sum(profit))}\n')
+    datafile.write(f'Average Change: $ {round(avg_prof_change, 2)}\n')
+    datafile.write(f'Greatest Increase in Profits: {max_prof_change_date} ($ {round(max_prof_change)})\n')
+    datafile.write(f'Greatest Decrease in Profits: {min_prof_change_date} ($ {round(min_prof_change)})\n')
